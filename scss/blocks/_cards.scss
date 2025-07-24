@@ -1,0 +1,29 @@
+.cards {
+
+    position: relative;
+    height: 100vh;
+    background: url("../images/166002-svet-krasochnost-purpur-sinij-fioletovyj-3840x2160.jpg") center/cover no-repeat;
+
+
+
+    &__title {
+        font-family: 'Raleway', sans-serif;
+        position: absolute;
+        display: inline-flex;
+        font-size: 66px;
+        margin: 0;
+        top: 12%;
+        right: 10%;
+    }
+
+    &__list {
+        margin: 0;
+        padding-top: 250px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        list-style: none;
+    }
+}

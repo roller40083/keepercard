@@ -1,0 +1,427 @@
+/* Global */
+/* ------------------------------------ */
+@import url("https://fonts.googleapis.com/css2?family=Advent+Pro:ital,wght@0,100..900;1,100..900&family=Nixie+One&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Raleway:700,900");
+a.no-underline {
+  text-decoration: none;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  font-family: "Source Sans 3", sans-serif;
+  font-weight: 100;
+  color: white;
+}
+
+/* Blocks */
+/* ------------------------------------ */
+.header {
+  display: flex;
+  justify-content: center;
+}
+
+.nav {
+  position: fixed;
+  z-index: 100;
+  margin: 10px 0 0 0;
+  padding: 0 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+  background: rgba(0, 0, 0, 0.363);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 2px 24px rgba(30, 34, 60, 0.12);
+  color: #fff;
+}
+.nav__list {
+  font-size: 20px;
+  z-index: 3;
+  padding: 0;
+  display: flex;
+  gap: 40px;
+  list-style-type: none;
+}
+.nav__link {
+  z-index: 3;
+  position: relative;
+  text-decoration: none;
+  color: #fff;
+  transition: color 0.3s, text-shadow 0.3s, letter-spacing 0.3s;
+}
+.nav__link::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  width: 0;
+  height: 1px;
+  background: white;
+  border-radius: 2px;
+  opacity: 0;
+  transition: opacity 0.3s, width 0.3s, left 0.3s, transform 0.3s;
+  pointer-events: none;
+}
+.nav__link:hover, .nav__link:focus {
+  text-shadow: 0 0 12px #5e60ce, 0 0 24px #4361ee;
+  letter-spacing: 2px;
+}
+.nav__link:hover::after, .nav__link:focus::after {
+  opacity: 1;
+  width: 100%;
+  left: 0;
+  transform: none;
+}
+
+.titles {
+  padding-top: 60px;
+}
+.titles__title {
+  margin: 0;
+  font-family: "Raleway", sans-serif;
+  font-weight: 900;
+  font-size: 130px;
+  text-transform: uppercase;
+  text-align: center;
+  transition: transform 0.4s;
+}
+.titles__title:hover {
+  transform: scale(1.2);
+}
+.titles__subtitle {
+  font-weight: 100;
+  margin: 0 0 40px;
+  text-align: center;
+  transition: transform 0.4s;
+}
+
+.knife-spin {
+  margin: 0 auto 50px;
+  position: relative;
+  width: 422px;
+  height: 207px;
+  display: flex;
+  justify-content: center;
+  perspective: 800px;
+  transform: translateX(-20px);
+}
+
+.knife {
+  padding: 20px;
+  width: 422px;
+  height: 207px;
+  border-radius: 24px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37), 0 10px 6px 0 rgba(0, 0, 0, 0.15);
+}
+
+.knifes {
+  display: flex;
+  justify-content: space-between;
+}
+
+.knife--left {
+  position: absolute;
+  left: 0;
+}
+
+.knife--right {
+  position: absolute;
+  right: 0;
+}
+
+.knife--main {
+  opacity: 1;
+  z-index: 2;
+}
+
+.knife--clear {
+  opacity: 0;
+  z-index: 1;
+}
+
+.knife-spin:hover .knife--main {
+  transform: rotateY(360deg) scale(1.1);
+  opacity: 0;
+  filter: blur(4px);
+  transition: opacity 0.4s 0.4s, transform 1.2s ease, filter 0.4s;
+}
+
+.knife-spin:hover .knife--clear {
+  opacity: 1;
+  transform: rotateY(360deg) scale(1);
+  filter: blur(0);
+  transition: opacity 0.4s 0.4s, transform 1.2s ease, filter 1s;
+}
+
+.knife-prices {
+  display: flex;
+  flex-direction: column;
+}
+
+.knife-price {
+  margin: 0 0 10px;
+  font-weight: 100;
+  font-size: 30px;
+  text-align: center;
+  color: rgb(255, 255, 255);
+}
+
+.knife-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 30px;
+  font-size: 20px;
+  font-weight: 100;
+  color: #fff;
+  background: linear-gradient(90deg, #0154c2 0%, #5e60ce 100%);
+  border: none;
+  border-radius: 32px;
+  box-shadow: 0 4px 10px rgb(0, 0, 0);
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.3s;
+}
+.knife-link:hover, .knife-link:focus {
+  background: linear-gradient(90deg, #4361ee 0%, #5e60ce 100%);
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 8px 32px rgba(67, 97, 238, 0.22);
+  text-decoration: none;
+  outline: none;
+}
+
+.knife-spin-row {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.knife-spin__label {
+  display: flex;
+  flex-direction: column;
+  font-family: "Raleway", sans-serif;
+  font-size: 55px;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.0549019608);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  transition: color 0.3s, opacity 0.3s;
+}
+.knife-spin__label span {
+  display: block;
+  line-height: 1.1;
+}
+
+.knife-spin__label--top {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.4117647059) 0%, #000000 70%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.home {
+  background: url("../images/series-2-pika-wallpaper-3.png") center/cover no-repeat;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  align-items: center;
+  opacity: 0;
+  animation: slide-down 0.8s cubic-bezier(0.4, 1, 0.4, 1) forwards;
+  animation-delay: 0s;
+}
+
+.nav {
+  opacity: 0;
+  animation: slide-down 0.8s cubic-bezier(0.4, 1, 0.4, 1) forwards;
+}
+
+.titles {
+  opacity: 0;
+  animation: slide-down 0.8s cubic-bezier(0.4, 1, 0.4, 1) forwards;
+  animation-delay: 0.4s;
+}
+
+.knife-spin-row {
+  opacity: 0;
+  animation: slide-down 0.8s cubic-bezier(0.4, 1, 0.4, 1) forwards;
+  animation-delay: 0.6s;
+}
+
+.knife-prices {
+  opacity: 0;
+  animation: slide-down 0.8s cubic-bezier(0.4, 1, 0.4, 1) forwards;
+  animation-delay: 0.8s;
+}
+
+@keyframes slide-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-60px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.product {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 1600px;
+  color: white;
+}
+
+.product__wrap {
+  display: flex;
+  gap: 40px;
+}
+
+.product__image {
+  display: flex;
+}
+
+.product__image img {
+  border-radius: 20px;
+  width: 500px;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.151);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 24px;
+  box-shadow: 0 4px 32px 0 rgba(31, 38, 135, 0.18);
+  padding: 32px 28px;
+}
+
+.product__description {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.151);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 24px;
+  box-shadow: 0 4px 32px 0 rgba(31, 38, 135, 0.18);
+  padding: 0px 28px;
+}
+
+.product__item {
+  font-size: 20px;
+}
+
+.product__description h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.product__description ul {
+  line-height: 1.6;
+  font-size: 1.1em;
+  padding-left: 1em;
+  margin: 0;
+  list-style-type: disc;
+}
+
+.product__description .product__price {
+  margin-top: 20px;
+  font-size: 2em;
+  text-align: center;
+  font-weight: 100;
+}
+
+.order-button {
+  display: inline-block;
+  font-weight: 100;
+  margin-top: 40px;
+  padding: 12px 60px;
+  background: linear-gradient(to right, #4f46e5, #06b6d4);
+  color: white;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 25px;
+  transition: transform 0.5s cubic-bezier(0.4, 1, 0.4, 1), box-shadow 0.3s;
+  box-shadow: 0 4px 24px rgba(79, 70, 229, 0.12);
+}
+
+.order-button:hover,
+.order-button:focus {
+  background-color: linear-gradient(to right, #4338ca, #0891b2);
+  transform: scale(1.06);
+  box-shadow: 0 8px 32px rgba(6, 182, 212, 0.18);
+}
+
+.about {
+  height: 100vh;
+}
+
+.cards {
+  position: relative;
+  height: 100vh;
+  background: url("../images/166002-svet-krasochnost-purpur-sinij-fioletovyj-3840x2160.jpg") center/cover no-repeat;
+}
+.cards__title {
+  font-family: "Raleway", sans-serif;
+  position: absolute;
+  display: inline-flex;
+  font-size: 66px;
+  margin: 0;
+  top: 12%;
+  right: 10%;
+}
+.cards__list {
+  margin: 0;
+  padding-top: 250px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  list-style: none;
+}
+
+.cards__card {
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  width: 300px;
+  padding: 25px;
+  background-color: rgba(0, 0, 0, 0.459);
+}
+.cards__card-icon {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 10px;
+  color: white;
+}
+.cards__card-titles {
+  display: flex;
+  gap: 20px;
+}
+
+.section-slide {
+  height: 100vh;
+  scroll-snap-align: start;
+}
+
+main {
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  height: 100vh;
+}/*# sourceMappingURL=style.css.map */
