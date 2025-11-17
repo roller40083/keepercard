@@ -1,5 +1,6 @@
 .header {
     font-family: "Jura", sans-serif;
+    font-size: 20px;
     border: 0.5px solid rgba(255, 255, 255, 0.178);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -80,10 +81,10 @@
             &::after {
                 content: '';
                 position: absolute;
-                bottom: -4px;
+                bottom: -8px;
                 left: 0;
                 width: 0;
-                height: 2px;
+                height: 1px;
                 background: white;
                 transition: width 0.3s ease;
             }
